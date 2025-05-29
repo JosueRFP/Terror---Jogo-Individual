@@ -2,20 +2,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum MonsterStates 
+public enum MonsterState 
 {
-    LOOKING, CHASE, PATROL, PLAYERVIEW, WAIT
+   Idle, LookingFor, Chase, Frozen, Hiden
 }
 
 public class Monster : MonoBehaviour
 {
-    MonsterStates state;
+    MonsterState state;
     NavMeshAgent agent;
+    [SerializeField] private Transform monsterPosition;
     [SerializeField] Transform player;
     [SerializeField] Transform[] patrolPoints;
-    private float waitTime;
+    private float waitTime = 2;
 
-    public MonsterStates State { get => state; set => state = value; }
+    public MonsterState State { get => state; set => state = value; }
 
 
 
@@ -23,74 +24,74 @@ public class Monster : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        
+        SetState(MonsterState.LookingFor);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Looking();
+       Looking();
         //agent.SetDestination(player.position);
+        //if (agent.remainingDistance <= agent.stoppingDistance){ }
 
         switch (state)
         {
-            case MonsterStates.WAIT:
+            case MonsterState.Idle:
                 break;
-            case MonsterStates.LOOKING:
+            case MonsterState.LookingFor:
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    SetState(MonsterStates.WAIT);
+                    SetState(MonsterState.Idle);
                 }
                 break;
-            case MonsterStates.CHASE:
-                agent.SetDestination(player.position);
+            case MonsterState.Chase:
                 break;
-            case MonsterStates.PLAYERVIEW:
+            case MonsterState.Frozen:            
                 break;
-
+            case MonsterState.Hiden:
+                break;
         }
     }
 
-   public void SetState(MonsterStates newState)
+   public void SetState(MonsterState newState)
    {
         switch (newState)
         {
-            case MonsterStates.WAIT:
-                StartCoroutine(LookForPlayer());
+            case MonsterState.Idle:
+                StartCoroutine(Waitting());
                 break;
-            case MonsterStates.LOOKING:
+            case MonsterState.LookingFor:
                 agent.SetDestination(patrolPoints[Random.Range(0, patrolPoints.Length)].position);
                 break;
-            case MonsterStates.CHASE:
+            case MonsterState.Chase:
                 break;
-            case MonsterStates.PLAYERVIEW:
+            case MonsterState.Frozen:
                 break;
-
         }
         state = newState;
 
    }
 
-    IEnumerator LookForPlayer()
+    IEnumerator Waitting()
     {
         yield return new WaitForSeconds(waitTime);
-        SetState(MonsterStates.PATROL);
+        SetState(MonsterState.LookingFor);
     }
 
     public void Looking()
     {
         if (!Physics.Linecast(transform.position, player.position))
         {
-            SetState(MonsterStates.CHASE);
+            SetState(MonsterState.Chase);
         }
         else
 
         {
-            if (!state.Equals(MonsterStates.CHASE))
+            if (!state.Equals(MonsterState.Chase))
                 return;
 
 
-            SetState(MonsterStates.PLAYERVIEW);
+            SetState(MonsterState.Frozen);
         }
     }
 }

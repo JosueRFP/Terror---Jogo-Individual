@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
                 }
                 break;
             case MonsterState.Chase:
+                agent.SetDestination(player.position);
                 break;
             case MonsterState.Frozen:            
                 break;
@@ -64,6 +65,7 @@ public class Monster : MonoBehaviour
                 agent.SetDestination(patrolPoints[Random.Range(0, patrolPoints.Length)].position);
                 break;
             case MonsterState.Chase:
+                agent.SetDestination(player.position);
                 break;
             case MonsterState.Frozen:
                 break;

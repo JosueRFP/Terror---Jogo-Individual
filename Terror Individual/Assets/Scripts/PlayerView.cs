@@ -20,13 +20,9 @@ public class PlayerView : MonoBehaviour, IInteraction
     }
     public void HitMonster()
     {
-        if (isLooking)
+        if (rayCastOrigin != null)
         {
-            mosterTransform.position = Vector3.forward;
-        }
-        if (!isLooking) 
-        {
-            mosterTransform.position = Vector3.zero;
+            Interact();
         }
     }
 

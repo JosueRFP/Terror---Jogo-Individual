@@ -4,14 +4,13 @@ using UnityEngine.AI;
 
 public enum MonsterState 
 {
-   Idle, LookingFor, Chase, Frozen, Hiden
+   Idle, LookingFor, Chase, Frozen
 }
 
 public class Monster : MonoBehaviour
 {
     MonsterState state;
     NavMeshAgent agent;
-    [SerializeField] private Transform monsterPosition;
     [SerializeField] Transform player;
     [SerializeField] Transform[] patrolPoints;
     private float waitTime = 2;
@@ -48,8 +47,6 @@ public class Monster : MonoBehaviour
                 agent.SetDestination(player.position);
                 break;
             case MonsterState.Frozen:            
-                break;
-            case MonsterState.Hiden:
                 break;
         }
     }

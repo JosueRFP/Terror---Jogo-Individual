@@ -93,5 +93,6 @@ public class Monster : MonoBehaviour
             SetState(MonsterState.Frozen);
         }
     }
+       
 }
 

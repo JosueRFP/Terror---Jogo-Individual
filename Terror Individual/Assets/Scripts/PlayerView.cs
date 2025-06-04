@@ -5,6 +5,7 @@ public class PlayerView : MonoBehaviour, IInteraction
     Transform rayCastOrigin;
     [SerializeField] Transform mosterTransform;
     bool isLooking;
+    IInteraction target;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,17 +18,18 @@ public class PlayerView : MonoBehaviour, IInteraction
     void Update()
     {
         Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward * 10, Color.cyan);
+        if (rayCastOrigin != null)
+        {
+            target?.HitMonster();
+        }
     }
     public void HitMonster()
     {
-        if (rayCastOrigin != null)
-        {
-            Interact();
-        }
+
     }
 
     public void Interact()
     {
-
+        
     }
 }

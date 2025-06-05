@@ -5,18 +5,30 @@ public enum PlayerSaw
     Blink, OpenEyes
 }
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : MonoBehaviour, IInteraction
 {
-    PlayerSaw viewState;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] float distance;
+    Transform rayCastOrigin;
+    PlayerSaw saw;
+
+   
+
     void Start()
     {
-        
+        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward * 10, Color.cyan);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1") && rayCastOrigin != null)
+        {
+            
+        }
     }
+    public void Interact()
+    {
+
+    }
+
 }

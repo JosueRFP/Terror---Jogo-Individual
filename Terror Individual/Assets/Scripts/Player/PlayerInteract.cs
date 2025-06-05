@@ -6,7 +6,7 @@ public class PlayerInteract : MonoBehaviour, IInteraction
     [SerializeField] float distance;
     IInteraction target;
 
-    public void Hit()
+    public void Interact()
     {
         
     }
@@ -21,10 +21,10 @@ public class PlayerInteract : MonoBehaviour, IInteraction
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward *10 , Color.cyan);
-        if (Input.GetButtonDown("Fire1"))
+        
+        if (Input.GetButtonDown ("Fire1"))
         {
-           target?.Hit();
+            target?.Interact();
         }
     }
 

@@ -20,8 +20,7 @@ public class PlayerInteract : MonoBehaviour, IInteraction
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         if (Input.GetButtonDown ("Fire1"))
         {
             target?.Interact();
@@ -48,13 +47,6 @@ public class PlayerInteract : MonoBehaviour, IInteraction
         }
 
 
-    }
+    }    
     
-    public void MonsterCollison(Collider col)
-    {
-        if (col.gameObject.GetComponent<Monster>() != null)
-        {
-            print("Acertou o Monstro");
-        }
-    }
 }

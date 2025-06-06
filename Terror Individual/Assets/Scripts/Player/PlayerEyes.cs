@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerEyes : MonoBehaviour
 {
+    Transform rayCastOrigin;
     CinemachineVirtualCamera virtualCamera;
     [SerializeField] float blinkTime;
     [SerializeField] GameObject blinkImage;
@@ -17,7 +18,7 @@ public class PlayerEyes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward * 10, Color.cyan);
     }
     IEnumerator Blink()
     {

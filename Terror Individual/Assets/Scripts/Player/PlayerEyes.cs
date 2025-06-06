@@ -1,24 +1,25 @@
 using UnityEngine;
-using Cinemachine;
 using System.Collections;
 
 public class PlayerEyes : MonoBehaviour
 {
-    Transform rayCastOrigin;
-    CinemachineVirtualCamera virtualCamera;
     [SerializeField] float blinkTime;
     [SerializeField] GameObject blinkImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
         StartCoroutine(Blink());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward * 10, Color.cyan);
+
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
     IEnumerator Blink()
     {

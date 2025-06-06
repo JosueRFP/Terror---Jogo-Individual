@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public enum MonsterState 
 {
-   Idle, LookingFor, Chase, Frozen
+   Idle, LookingFor, Chase
 }
 
 public class Monster : MonoBehaviour
@@ -14,6 +15,8 @@ public class Monster : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Transform[] patrolPoints;
     private float waitTime = 2;
+    [SerializeField] UnityEvent OnJumpScare;
+   [SerializeField] AudioClip jumpScare;
 
     public MonsterState State { get => state; set => state = value; }
 
@@ -30,9 +33,6 @@ public class Monster : MonoBehaviour
     void Update()
     {
        Looking();
-        //agent.SetDestination(player.position);
-        //if (agent.remainingDistance <= agent.stoppingDistance){ }
-
         switch (state)
         {
             case MonsterState.Idle:
@@ -46,8 +46,7 @@ public class Monster : MonoBehaviour
             case MonsterState.Chase:
                 agent.SetDestination(player.position);
                 break;
-            case MonsterState.Frozen:            
-                break;
+            
         }
     }
 
@@ -63,8 +62,6 @@ public class Monster : MonoBehaviour
                 break;
             case MonsterState.Chase:
                 agent.SetDestination(player.position);
-                break;
-            case MonsterState.Frozen:
                 break;
         }
         state = newState;
@@ -88,11 +85,17 @@ public class Monster : MonoBehaviour
         {
             if (!state.Equals(MonsterState.Chase))
                 return;
-
-
-            SetState(MonsterState.Frozen);
+                      
         }
     }
-       
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            OnJumpScare.Invoke();
+            jumpScare.GetInstanceID();
+        }
+    }
 }
 

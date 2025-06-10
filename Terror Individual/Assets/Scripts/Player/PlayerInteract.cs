@@ -12,12 +12,13 @@ public class PlayerInteract : MonoBehaviour, IInteraction
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        rayCastOrigin = Camera.main.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(rayCastOrigin.position, rayCastOrigin.forward * 10, Color.red);
         if (Input.GetButtonDown("Fire1"))
         {
             target?.Interact();
@@ -31,6 +32,7 @@ public class PlayerInteract : MonoBehaviour, IInteraction
             if (hit.collider.TryGetComponent(out IInteraction target))
             {
                 this.target = target;
+                print("Acertou algo");
 
             }
             else

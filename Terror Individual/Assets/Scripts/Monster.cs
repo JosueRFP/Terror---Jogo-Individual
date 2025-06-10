@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour
     [SerializeField] Transform[] patrolPoints;
     private float waitTime = 2;
     [SerializeField] UnityEvent OnJumpScare;
-   [SerializeField] AudioClip jumpScare;
+   [SerializeField] GameObject jumpScare;
 
     public MonsterState State { get => state; set => state = value; }
 
@@ -94,7 +94,7 @@ public class Monster : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             OnJumpScare.Invoke();
-            jumpScare.GetInstanceID();
+            jumpScare.SetActive(true);
         }
     }
 }

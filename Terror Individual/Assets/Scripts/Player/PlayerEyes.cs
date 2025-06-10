@@ -1,8 +1,14 @@
 using UnityEngine;
 using System.Collections;
+public enum Eyes
+{
+    WokedUp, Blink
+}
 
 public class PlayerEyes : MonoBehaviour
 {
+    [SerializeField] Transform monsterPosition;
+    Eyes state;
     [SerializeField] float blinkTime;
     [SerializeField] GameObject blinkImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,6 +20,14 @@ public class PlayerEyes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (state) 
+        {
+            case Eyes.WokedUp:
+                break;
+            case Eyes.Blink: 
+                blinkImage.SetActive(true); 
+                break;
+        }
 
     }
 
@@ -30,4 +44,5 @@ public class PlayerEyes : MonoBehaviour
         blinkImage.SetActive(false);
         
     }
+
 }

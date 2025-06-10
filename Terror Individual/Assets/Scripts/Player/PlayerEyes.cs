@@ -1,34 +1,24 @@
 using UnityEngine;
 using System.Collections;
-public enum Eyes
-{
-    WokedUp, Blink
-}
 
-public class PlayerEyes : MonoBehaviour
+
+public class PlayerEyes : MonoBehaviour, ISeeYou
 {
-    [SerializeField] Transform monsterPosition;
-    Eyes state;
+    Transform rayCast;
     [SerializeField] float blinkTime;
     [SerializeField] GameObject blinkImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rayCast = Camera.main.transform;
         StartCoroutine(Blink());
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (state) 
-        {
-            case Eyes.WokedUp:
-                break;
-            case Eyes.Blink: 
-                blinkImage.SetActive(true); 
-                break;
-        }
-
+        
+        Debug.DrawRay(rayCast.position, rayCast.forward * 10, Color.red);
     }
 
     private void FixedUpdate()
@@ -45,4 +35,8 @@ public class PlayerEyes : MonoBehaviour
         
     }
 
+    public void HitMonster()
+    {
+
+    }
 }

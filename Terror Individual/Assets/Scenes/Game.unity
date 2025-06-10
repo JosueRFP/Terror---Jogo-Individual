@@ -637,7 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c48090086efc04cbef8330798652b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPosition: {fileID: 0}
   blinkTime: 1
   blinkImage: {fileID: 1931002300}
 --- !u!1001 &101971311
@@ -3241,6 +3240,19 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!114 &304274919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304274911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866550ce6a3797341a5f05e017b587e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterPosition: {fileID: 0}
 --- !u!1001 &312472854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4156,13 +4168,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: c9d0d7ae06356374d962b7489f3163f2, type: 3}
   m_Resource: {fileID: 8300000, guid: c9d0d7ae06356374d962b7489f3163f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.743
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 154
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -10594,6 +10606,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f72c37ab8aab44147b1db924a0206cc7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 304274918}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f72c37ab8aab44147b1db924a0206cc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 304274919}
   m_SourcePrefab: {fileID: 100100000, guid: f72c37ab8aab44147b1db924a0206cc7, type: 3}
 --- !u!1001 &750420890
 PrefabInstance:

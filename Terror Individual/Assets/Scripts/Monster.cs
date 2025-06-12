@@ -16,7 +16,8 @@ public class Monster : MonoBehaviour
     [SerializeField] Transform[] patrolPoints;
     private float waitTime = 2;
     [SerializeField] UnityEvent OnJumpScare;
-   [SerializeField] GameObject jumpScare;
+    [SerializeField] GameObject jumpScare;
+    [SerializeField] float visonAgle;
 
     public MonsterState State { get => state; set => state = value; }
 
@@ -32,6 +33,10 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!SeeMonster())
+        {
+
+        }
        Looking();
         switch (state)
         {
@@ -95,6 +100,24 @@ public class Monster : MonoBehaviour
         {
             OnJumpScare.Invoke();
             jumpScare.SetActive(true);
+        }
+    }
+
+   public bool SeeMonster()
+    {
+        Vector3 enemyDirection = (transform.position - player.position).normalized;
+        float angle = Vector3.Angle(player.forward, enemyDirection);
+
+        if(angle < visonAgle / 2f)
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(player.position, enemyDirection, out hit))
+            {
+                if(hit.transform == this.transform)
+                {
+                    return true;
+                }
+            }
         }
     }
 }

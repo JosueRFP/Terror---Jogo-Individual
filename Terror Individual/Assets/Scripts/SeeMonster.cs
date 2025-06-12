@@ -6,6 +6,7 @@ public class SeeMonster : MonoBehaviour, ISeeYou
     public void HitMonster()
     {
         print("Bateu no Monstro");
+        monsterPosition.position = Vector3.zero;
     }
 
     

@@ -18,7 +18,7 @@ public class PlayerEyes : MonoBehaviour, ISeeYou
     void Update()
     {
         
-        Debug.DrawRay(rayCast.position, rayCast.forward * 10, Color.red);
+        Debug.DrawRay(rayCast.position, rayCast.forward * 10, Color.blue);
     }
 
     private void FixedUpdate()
@@ -39,4 +39,6 @@ public class PlayerEyes : MonoBehaviour, ISeeYou
     {
 
     }
+
+    
 }

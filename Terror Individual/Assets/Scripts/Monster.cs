@@ -32,12 +32,8 @@ public class Monster : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (!SeeMonster())
-        {
-
-        }
-       Looking();
+    {       
+        Looking();
         switch (state)
         {
             case MonsterState.Idle:
@@ -103,22 +99,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-   public bool SeeMonster()
-    {
-        Vector3 enemyDirection = (transform.position - player.position).normalized;
-        float angle = Vector3.Angle(player.forward, enemyDirection);
-
-        if(angle < visonAgle / 2f)
-        {
-            RaycastHit hit;
-            if(Physics.Raycast(player.position, enemyDirection, out hit))
-            {
-                if(hit.transform == this.transform)
-                {
-                    return true;
-                }
-            }
-        }
-    }
+   
 }
 

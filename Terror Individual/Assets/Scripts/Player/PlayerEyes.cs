@@ -16,8 +16,7 @@ public class PlayerEyes : MonoBehaviour, ISeeYou
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         Debug.DrawRay(rayCast.position, rayCast.forward * 10, Color.blue);
     }
 

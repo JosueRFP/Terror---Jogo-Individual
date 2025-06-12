@@ -24,7 +24,7 @@ public class BookController : MonoBehaviour
 
     void UpdateBooksCount()
     {
-        
+        booksTxt.text = ""
     }
 
   

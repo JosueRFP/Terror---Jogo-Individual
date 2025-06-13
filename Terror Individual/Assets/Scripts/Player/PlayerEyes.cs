@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerEyes : MonoBehaviour, ISeeYou
 {
+    public static PlayerEyes eyes;
     Transform rayCast;
     [SerializeField] float blinkTime;
     [SerializeField] GameObject blinkImage;

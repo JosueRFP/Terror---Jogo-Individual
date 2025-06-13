@@ -6,9 +6,6 @@ public class PlayerInteract : MonoBehaviour, IInteraction
     [SerializeField] float distance;
     IInteraction target;
 
-
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,8 +29,6 @@ public class PlayerInteract : MonoBehaviour, IInteraction
             if (hit.collider.TryGetComponent(out IInteraction target))
             {
                 this.target = target;
-                print("Acertou algo");
-
             }
             else
             {

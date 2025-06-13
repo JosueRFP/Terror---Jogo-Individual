@@ -1,31 +1,39 @@
 using UnityEngine;
-using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using UnityEngine.Events;
 
 
 public class BookController : MonoBehaviour
 {
-    [SerializeField] GameObject endGame;
+    [SerializeField] UnityEvent OnEndGame;
+    [SerializeField] string sceneName;
+    public List<GameObject> books = new List<GameObject>();
     [SerializeField] TextMeshProUGUI booksTxt;
     
-    float booksQtd = 7;
+    float booksQtd, distance;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UpdateBooksCount();
+        booksQtd = books.Count;
     }
+
+    
 
     public void GetBook()
     {
-        booksQtd--;
-        UpdateBooksCount();
-
+        
     }
 
-    void UpdateBooksCount()
+    public void UpdateBooksCount()
     {
-        booksTxt.text = ""
+        booksQtd--;
+        if (booksQtd <= 0)
+        {
+            
+           
+        }
     }
-
-  
 }
